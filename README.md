@@ -5,4 +5,4 @@ Samples for Bruce Lee Contruction Kit (BLCK)
 The original version of Brule Lee (1984 Datasoft - By Ron J Fortier and Kelly Day) rearranged for BLCK.
 
 ## Teaser I
-[screenshot](teaser I/artwork/screenshot.png?raw=true "jkljklj")
+!(teaser I/artwork/screenshot.png)
