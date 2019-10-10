@@ -5,4 +5,5 @@
 *.lab
 *.cfg
 *.lst
+**/misc/rip/**
 maps.asm

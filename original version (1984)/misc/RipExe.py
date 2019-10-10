@@ -3,7 +3,20 @@ from yattag import Doc
 from yattag import indent
 import sys
 from pathlib import Path,PurePath
-from os import path
+import os
+
+curPath=Path(os.path.dirname(os.path.realpath(__file__)))
+
+ripPath=curPath / "rip"
+
+if not ripPath.exists():
+    os.mkdir(ripPath)
+if not (ripPath / "fnts").exists():   
+    os.mkdir(ripPath / "fnts")
+if not (ripPath / "maps").exists():   
+    os.mkdir(ripPath / "maps")
+if not (ripPath / "asm").exists():   
+   os.mkdir(ripPath / "asm")
 
 doc, tag, text = Doc().tagtext()
 
@@ -43,14 +56,14 @@ def word(l,h):
 
 def exportFont(font,mem):
     filename=f'font{font.index}.fnt'
-    with open(filename, "wb") as fontFile:
+    with open(ripPath / "fnts" / filename, "wb") as fontFile:
         fontFile.write(mem[font.adr:font.adr+1024])
         fontFile.close()
     return filename
 
 def exportRle(room,mem):
     filename=f'map{room.index}.rle'
-    with open(filename, "wb") as mapFile:
+    with open(ripPath / "maps" / filename, "wb") as mapFile:
         mapFile.write(mem[room.adr:room.adr+room.length])
         mapFile.close()
     return filename
@@ -58,7 +71,7 @@ def exportRle(room,mem):
 def generateName(roomIndex):
     return "Map "+str(roomIndex)
 
-with open("c:/temp/BruceLeeXEX.xex", "rb") as f:
+with open(curPath / "RippedBruceLee.xex", "rb") as f:
     while readSegment(f):
         pass    
     f.close()
@@ -138,8 +151,8 @@ def getRoomUUIDByIndex(index):
             return room.uid
     return ''
 
-def createAsm(dirname,filename):
-    path = Path("c:/Bruceleegacy") / dirname / filename
+def createAsm(filename):
+    path = ripPath / "asm" / filename
     print(path)
     if not path.exists():
         with open( path, 'w'): 
@@ -188,11 +201,11 @@ with tag('bleditor'):
                     coloradr+=5
                     doc.stag('dli', order='COLBK / COLPF0 / COLPF1 / COLPF2', row=str(line+1), colbk=str(a8mem[coloradr]), colpf3=str(a8mem[coloradr+1]), colpf2=str(a8mem[coloradr+2]), colpf1=str(a8mem[coloradr+3]), colpf0=str(a8mem[coloradr+4]))
             with tag('InitRoutinePath'):
-                text(createAsm("init",f'map{str(room.index).zfill(2)}-init.asm'))
+                text(createAsm(f'map{str(room.index).zfill(2)}-init.asm'))
             with tag('ExecRoutinePath'):
-                text(createAsm("exec",f"map{str(room.index).zfill(2)}-exec.asm"))
+                text(createAsm(f"map{str(room.index).zfill(2)}-exec.asm"))
             with tag('TileCollisionRoutinePath'):
-                text(createAsm("collision",f"map{str(room.index).zfill(2)}-collision.asm"))    
+                text(createAsm(f"map{str(room.index).zfill(2)}-collision.asm"))    
             with tag('foe'):
                 text("true" if a8mem[MapFoeFlags+room.index]==0 else "false")
             with tag('brucestart'):
@@ -266,7 +279,7 @@ result = indent(
     indent_text = True
 )
 
-with open("c:/Bruceleegacy/brucelee.xml", "w") as f:
+with open(ripPath / "brucelee.xml", "w") as f:
     f.write(result)
     f.close()
 
