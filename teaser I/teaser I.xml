@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bleditor>
+  <font uid="b5854a73-8e0d-498f-9d7d-f86f08465572" path="fnts\ROF.fnt" />
+  <font uid="19988935-741a-4ff5-867f-d663812174d8" path="fnts\BLII.fnt" />
+  <font uid="28821084-cd02-498e-9fd2-8fe1542c3b27" path="fnts\BruceIsBackHome.fnt" />
+  <map name="ROF" font="b5854a73-8e0d-498f-9d7d-f86f08465572" path="maps\ROF.rle" uid="d0c8bed2-930f-48be-b5c1-c8c880a13341">
+    <dlis>
+      <dli order="COLBK / COLPF0 / COLPF1 / COLPF2" row="0" colbk="130" colpf0="136" colpf1="14" colpf2="84" colpf3="0" />
+    </dlis>
+    <InitRoutinePath>asm\Init ROF.asm</InitRoutinePath>
+    <ExecRoutinePath>asm\Exec ROF.asm</ExecRoutinePath>
+    <TileCollisionRoutinePath>asm\TileCollision ROF.asm</TileCollisionRoutinePath>
+    <Colpf0Dectection>
+      <Type>Always</Type>
+    </Colpf0Dectection>
+    <Colpf2Dectection>
+      <Type>Always</Type>
+    </Colpf2Dectection>
+    <Colpf3Dectection>
+      <Type>Always</Type>
+    </Colpf3Dectection>
+    <foe>false</foe>
+    <brucestart>
+      <x1>100</x1>
+      <x2>150</x2>
+      <y1>160</y1>
+      <y2>0</y2>
+    </brucestart>
+    <exit1>
+      <map>d95be7cb-0090-4886-a7ba-b76f7eacb22e</map>
+      <x>188</x>
+      <y>194</y>
+    </exit1>
+    <exit2>
+      <map />
+      <x>0</x>
+      <y>0</y>
+    </exit2>
+    <exit3>
+      <map />
+      <x>0</x>
+      <y>0</y>
+    </exit3>
+    <exit4>
+      <map />
+      <x>0</x>
+      <y>0</y>
+    </exit4>
+    <YamoSpawnPosition>0</YamoSpawnPosition>
+    <NinjaSpawnPosition>0</NinjaSpawnPosition>
+    <NinjaEnterCount1>0</NinjaEnterCount1>
+    <NinjaEnterCount2>0</NinjaEnterCount2>
+    <YamoEnterCount1>0</YamoEnterCount1>
+    <YamoEnterCount2>0</YamoEnterCount2>
+  </map>
+  <map name="BLII" font="19988935-741a-4ff5-867f-d663812174d8" path="maps\BLII.rle" uid="d95be7cb-0090-4886-a7ba-b76f7eacb22e">
+    <dlis>
+      <dli order="COLBK / COLPF0 / COLPF1 / COLPF2" row="0" colbk="134" colpf0="53" colpf1="138" colpf2="14" colpf3="0" />
+      <dli order="COLBK / COLPF0 / COLPF1 / COLPF2" row="3" colbk="134" colpf0="53" colpf1="14" colpf2="130" colpf3="0" />
+      <dli order="COLBK / COLPF0 / COLPF1 / COLPF2" row="4" colbk="8" colpf0="184" colpf1="14" colpf2="244" colpf3="0" />
+      <dli order="COLBK / COLPF0 / COLPF1 / COLPF2" row="6" colbk="8" colpf0="14" colpf1="244" colpf2="14" colpf3="0" />
+      <dli order="COLBK / COLPF0 / COLPF1 / COLPF2" row="7" colbk="6" colpf0="14" colpf1="244" colpf2="14" colpf3="0" />
+      <dli order="COLBK / COLPF0 / COLPF1 / COLPF2" row="8" colbk="130" colpf0="8" colpf1="52" colpf2="14" colpf3="0" />
+      <dli order="COLBK / COLPF0 / COLPF1 / COLPF2" row="10" colbk="130" colpf0="0" colpf1="52" colpf2="84" colpf3="0" />
+    </dlis>
+    <InitRoutinePath>asm\Init BLII.asm</InitRoutinePath>
+    <ExecRoutinePath>asm\Exec BLII.asm</ExecRoutinePath>
+    <TileCollisionRoutinePath>asm\TileCollision BLII.asm</TileCollisionRoutinePath>
+    <Colpf0Dectection>
+      <Type>Inside</Type>
+      <Zones>
+        <rect>
+          <Top>59</Top>
+          <Left>0</Left>
+          <Bottom>61</Bottom>
+          <Right>159</Right>
+        </rect>
+        <rect>
+          <Top>42</Top>
+          <Left>55</Left>
+          <Bottom>54</Bottom>
+          <Right>70</Right>
+        </rect>
+        <rect>
+          <Top>42</Top>
+          <Left>32</Left>
+          <Bottom>46</Bottom>
+          <Right>45</Right>
+        </rect>
+        <rect>
+          <Top>36</Top>
+          <Left>8</Left>
+          <Bottom>39</Bottom>
+          <Right>27</Right>
+        </rect>
+        <rect>
+          <Top>0</Top>
+          <Left>0</Left>
+          <Bottom>32</Bottom>
+          <Right>169</Right>
+        </rect>
+        <rect>
+          <Top>82</Top>
+          <Left>0</Left>
+          <Bottom>88</Bottom>
+          <Right>160</Right>
+        </rect>
+        <rect>
+          <Top>38</Top>
+          <Left>27</Left>
+          <Bottom>44</Bottom>
+          <Right>43</Right>
+        </rect>
+        <rect>
+          <Top>33</Top>
+          <Left>10</Left>
+          <Bottom>37</Bottom>
+          <Right>25</Right>
+        </rect>
+      </Zones>
+      <Flags>
+        <Flag>Always</Flag>
+        <Flag>Always</Flag>
+        <Flag>Always</Flag>
+        <Flag>Always</Flag>
+        <Flag>Always</Flag>
+        <Flag>Always</Flag>
+        <Flag>Always</Flag>
+        <Flag>Always</Flag>
+      </Flags>
+    </Colpf0Dectection>
+    <Colpf2Dectection>
+      <Type>Inside</Type>
+      <Zones>
+        <rect>
+          <Top>60</Top>
+          <Left>55</Left>
+          <Bottom>82</Bottom>
+          <Right>70</Right>
+        </rect>
+        <rect>
+          <Top>42</Top>
+          <Left>54</Left>
+          <Bottom>57</Bottom>
+          <Right>71</Right>
+        </rect>
+      </Zones>
+      <Flags>
+        <Flag>Always</Flag>
+        <Flag>Always</Flag>
+      </Flags>
+    </Colpf2Dectection>
+    <Colpf3Dectection>
+      <Type>Inside</Type>
+      <Zones>
+        <rect>
+          <Top>67</Top>
+          <Left>0</Left>
+          <Bottom>86</Bottom>
+          <Right>8</Right>
+        </rect>
+        <rect>
+          <Top>41</Top>
+          <Left>0</Left>
+          <Bottom>60</Bottom>
+          <Right>1</Right>
+        </rect>
+        <rect>
+          <Top>35</Top>
+          <Left>145</Left>
+          <Bottom>88</Bottom>
+          <Right>160</Right>
+        </rect>
+        <rect>
+          <Top>3</Top>
+          <Left>0</Left>
+          <Bottom>41</Bottom>
+          <Right>2</Right>
+        </rect>
+      </Zones>
+      <Flags>
+        <Flag>Always</Flag>
+        <Flag>Always</Flag>
+        <Flag>Always</Flag>
+        <Flag>Always</Flag>
+      </Flags>
+    </Colpf3Dectection>
+    <foe>false</foe>
+    <brucestart>
+      <x1>150</x1>
+      <x2>0</x2>
+      <y1>190</y1>
+      <y2>0</y2>
+    </brucestart>
+    <exit1>
+      <map>c4d9e0de-0e98-4d6b-8fa3-cf47cdf6268d</map>
+      <x>173</x>
+      <y>125</y>
+    </exit1>
+    <exit2>
+      <map>d0c8bed2-930f-48be-b5c1-c8c880a13341</map>
+      <x>188</x>
+      <y>62</y>
+    </exit2>
+    <exit3>
+      <map />
+      <x>0</x>
+      <y>0</y>
+    </exit3>
+    <exit4>
+      <map />
+      <x>0</x>
+      <y>0</y>
+    </exit4>
+    <YamoSpawnPosition>0</YamoSpawnPosition>
+    <NinjaSpawnPosition>0</NinjaSpawnPosition>
+    <NinjaEnterCount1>0</NinjaEnterCount1>
+    <NinjaEnterCount2>0</NinjaEnterCount2>
+    <YamoEnterCount1>0</YamoEnterCount1>
+    <YamoEnterCount2>0</YamoEnterCount2>
+  </map>
+  <map name="BruceIsBackHome" font="28821084-cd02-498e-9fd2-8fe1542c3b27" path="maps\BruceIsBackHome.rle" uid="c4d9e0de-0e98-4d6b-8fa3-cf47cdf6268d">
+    <dlis>
+      <dli order="COLBK / COLPF1 / COLPF0 / COLPF2" row="0" colbk="2" colpf0="14" colpf1="2" colpf2="0" colpf3="4" />
+    </dlis>
+    <InitRoutinePath>asm\Init BruceIsBackHome.asm</InitRoutinePath>
+    <ExecRoutinePath>asm\Exec BruceIsBackHome.asm</ExecRoutinePath>
+    <TileCollisionRoutinePath>asm\TileCollision BruceIsBackHome.asm</TileCollisionRoutinePath>
+    <Colpf0Dectection>
+      <Type>Always</Type>
+    </Colpf0Dectection>
+    <Colpf2Dectection>
+      <Type>Always</Type>
+    </Colpf2Dectection>
+    <Colpf3Dectection>
+      <Type>Always</Type>
+    </Colpf3Dectection>
+    <foe>false</foe>
+    <brucestart>
+      <x1>173</x1>
+      <x2>0</x2>
+      <y1>125</y1>
+      <y2>0</y2>
+    </brucestart>
+    <exit1>
+      <map />
+      <x>0</x>
+      <y>0</y>
+    </exit1>
+    <exit2>
+      <map />
+      <x>0</x>
+      <y>0</y>
+    </exit2>
+    <exit3>
+      <map />
+      <x>0</x>
+      <y>0</y>
+    </exit3>
+    <exit4>
+      <map />
+      <x>0</x>
+      <y>0</y>
+    </exit4>
+    <YamoSpawnPosition>0</YamoSpawnPosition>
+    <NinjaSpawnPosition>0</NinjaSpawnPosition>
+    <NinjaEnterCount1>0</NinjaEnterCount1>
+    <NinjaEnterCount2>0</NinjaEnterCount2>
+    <YamoEnterCount1>0</YamoEnterCount1>
+    <YamoEnterCount2>0</YamoEnterCount2>
+  </map>
+</bleditor>
