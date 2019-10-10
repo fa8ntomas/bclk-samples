@@ -1,4 +1,4 @@
-Samples for Bruce Lee Contruction Kit (bclk)
+Samples for Bruce Lee Contruction Kit (BLCK)
 
 ## Original version (1984)
 
