@@ -10,4 +10,4 @@ The original version of Brule Lee (1984 Datasoft - By Ron J Fortier and Kelly Da
 
 See [this post](https://atariage.com/forums/topic/288392-two-bruce-lee-sequels/?do=findComment&comment=4307623) at Atari Age.
 
-![screenshot](teaser%20I/artwork/screenshot.png)
+![screenshot](teaser%20I/artwork/screenshotB.png)![screenshot](teaser%20I/artwork/screenshotA.png)
