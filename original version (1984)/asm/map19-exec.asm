@@ -28,10 +28,10 @@ L3948   sta L013C,X
         
         ; Update DList
         lda #BLANK3
-        sta L0EF1+3
-        sta L0EF1+4
+        sta DisplayList1+3
+        sta DisplayList1+4
         lda #BLANK2
-        sta L0EF1+5
+        sta DisplayList1+5
         
         ldx #$00
         jmp GetMapStartPos
@@ -45,11 +45,11 @@ L396A   lda RANDOM
         
         ; Update DList
         lda #LMS+MODE2
-        sta L0EF1+3
+        sta DisplayList1+3
         lda #$A5
-        sta L0EF1+4
+        sta DisplayList1+4
         lda #$78			
-        sta L0EF1+5	
+        sta DisplayList1+5	
                             ;Changes colors on last screen - $13
         lda #$04			;Gold room
         ldx #$00			;

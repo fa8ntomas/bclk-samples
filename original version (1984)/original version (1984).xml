@@ -3,6 +3,7 @@
   <font uid="d731e995-3d42-4bc3-88b2-e3ac1981873f" path="fnts\font0.fnt" />
   <font uid="6a696803-05ba-423f-bfd5-80d1587a2b94" path="fnts\font1.fnt" />
   <font uid="0e293a79-dd8a-47d0-a330-7468e721cb84" path="fnts\font2.fnt" />
+  <include>includes\inc1.asm</include>
   <map name="Map 0" font="d731e995-3d42-4bc3-88b2-e3ac1981873f" path="maps\map0.rle" uid="69b20f2a-a059-4797-be67-a39abba15046">
     <dlis>
       <dli order="COLBK / COLPF0 / COLPF1 / COLPF2" row="0" colbk="4" colpf0="14" colpf1="136" colpf2="6" colpf3="0" />
