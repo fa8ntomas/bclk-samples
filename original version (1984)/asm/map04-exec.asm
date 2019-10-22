@@ -79,7 +79,7 @@ L2ED2:      lda Map4Lamps+1*4     ; lamp 2
             ldy #$19
             jsr PlotChars		;Opens right floor on screen 4
             lda #$06
-            jsr L3782
+            jsr PlotFire3
 L2F02:      lda MapSomething
             beq L2F09
             jmp L2FA0
@@ -94,19 +94,19 @@ L2F09:      inc ENDPT
 L2F17:      jsr PlotFireL378C
             jmp L2F38
 			
-L2F1D:      ldx BITMSK
+L2F1D:      ldx Fire1X
             cpx #$03
             bcs L2F17
             lda #$06
             jsr PlotFireL378C
-            inc BITMSK
+            inc Fire1X
             lda #$02
             sta ENDPT
             bne L2F17
 L2F30:      lda #$C0
             sta ENDPT
             lda #$01
-            sta BITMSK
+            sta Fire1X
 L2F38:      lda Map4Lamps
             beq L2F6C
             inc ENDPT+1
@@ -119,19 +119,19 @@ L2F38:      lda Map4Lamps
 L2F4B:      jsr PlotFire2
             jmp L2F6C
 			
-L2F51:      ldx SHFAMT
+L2F51:      ldx Fire2X
             cpx #$0C
             bcs L2F4B
             lda #$06
             jsr PlotFire2
-            inc SHFAMT
+            inc Fire2X
             lda #$02
             sta ENDPT+1
             bne L2F4B
 L2F64:      lda #$F4
             sta ENDPT+1
             lda #$0B
-            sta SHFAMT
+            sta Fire2X
 L2F6C:      lda Map4Lamps+4
             beq L2FA0
             inc DELTAR
@@ -141,21 +141,21 @@ L2F6C:      lda Map4Lamps+4
             beq L2F85
             cmp #$07
             beq L2F98
-L2F7F:      jsr L3782
+L2F7F:      jsr PlotFire3
             jmp L2FA0
 			
-L2F85:      ldx ROWAC
+L2F85:      ldx Fire3X
             cpx #$1B
             bcs L2F7F
             lda #$06
-            jsr L3782
-            inc ROWAC
+            jsr PlotFire3
+            inc Fire3X
             lda #$02
             sta DELTAR
             bne L2F7F
 L2F98:      lda #$F4
             sta DELTAR
             lda #$1A
-            sta ROWAC
+            sta Fire3X
 			
 L2FA0:      jmp UpdateVines

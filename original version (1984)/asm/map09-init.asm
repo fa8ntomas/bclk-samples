@@ -8,12 +8,12 @@ Map9Init:   lda #$04
             lda #$0C
             sta BUFSTR
             lda #$10
-            sta BITMSK
-            sta SHFAMT
+            sta Fire1X
+            sta Fire2X
             lda #$05
-            sta ROWAC+1
+            sta Fire1Y
             lda #$06
-            sta COLAC
+            sta Fire2Y
             lda #$FC
             sta ENDPT
             lda #$FF

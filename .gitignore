@@ -7,3 +7,6 @@
 *.lst
 **/misc/rip/**
 maps.asm
+engine.asm
+/includes/**
+*.bak

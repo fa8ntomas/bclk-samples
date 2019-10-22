@@ -63,19 +63,19 @@ L3014:      inc ENDPT
 L3022:      jsr PlotFire1
             jmp L3043
 			
-L3028:      ldx BITMSK
+L3028:      ldx Fire1X
             cpx #$1C
             bcs L3022
             lda #$06
             jsr PlotFire1
-            inc BITMSK
+            inc Fire1X
             lda #$02
             sta ENDPT
             bne L3022
 L303B:      lda #$F0
             sta ENDPT
             lda #$1B
-            sta BITMSK
+            sta Fire1X
 L3043:      lda Map5Lamps+8*4
             beq L3077
             inc ENDPT+1
@@ -88,19 +88,19 @@ L3043:      lda Map5Lamps+8*4
 L3056:      jsr PlotFire2
             jmp L3077
 			
-L305C:      ldx SHFAMT
+L305C:      ldx Fire2X
             cpx #$1C
             bcs L3056
             lda #$06
             jsr PlotFire2
-            inc SHFAMT
+            inc Fire2X
             lda #$02
             sta ENDPT+1
             bne L3056
 L306F:      lda #$F0
             sta ENDPT+1
             lda #$1B
-            sta SHFAMT
+            sta Fire2X
 L3077:      inc DELTAR
             bmi L30A6
             lda DELTAR
@@ -111,17 +111,17 @@ L3077:      inc DELTAR
 L3085:      jsr PlotFire3_7
             jmp L30A6
 			
-L308B:      ldx ROWAC
+L308B:      ldx Fire3X
             cpx #$02
             bcs L3085
             lda #$06
             jsr PlotFire3_7
-            inc ROWAC
+            inc Fire3X
             lda #$02
             sta DELTAR
             bne L3085
 L309E:      lda #$F2
             sta DELTAR
             lda #$01
-            sta ROWAC
+            sta Fire3X
 L30A6:      jmp UpdateVines

@@ -87,17 +87,17 @@ L3367:      inc ENDPT
 L3375:      jsr PlotFireL378C
             jmp L3396
             
-L337B:      ldx BITMSK
+L337B:      ldx Fire1X
             cpx #$14
             bcs L3375
             lda #$06
             jsr PlotFireL378C
-            inc BITMSK
+            inc Fire1X
             lda #$02
             sta ENDPT
             bne L3375
 L338E:      lda #$10
-            sta BITMSK
+            sta Fire1X
             lda #$D0
             sta ENDPT
 L3396:      inc ENDPT+1
@@ -110,17 +110,17 @@ L3396:      inc ENDPT+1
 L33A4:      jsr PlotFireL3794
             jmp L33C5
             
-L33AA:      ldx SHFAMT
+L33AA:      ldx Fire2X
             cpx #$14
             bcs L33A4
             lda #$06
             jsr PlotFireL3794
-            inc SHFAMT
+            inc Fire2X
             lda #$02
             sta ENDPT+1
             bne L33A4
 L33BD:      lda #$10
-            sta SHFAMT
+            sta Fire2X
             lda #$D0
             sta ENDPT+1
 L33C5:      jmp UpdateVines

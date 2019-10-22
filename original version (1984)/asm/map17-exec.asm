@@ -65,10 +65,10 @@ L36DE:      cpx #$01
             jsr PlotFire2
             jmp L3731
             
-L36E8:      jsr L3782
+L36E8:      jsr PlotFire3
             jmp L3731
             
-L36EE:      ldy BITMSK,X
+L36EE:      ldy Fire1X,X
             cpx #$00
             bne L36FA
             cpy #$23
@@ -87,16 +87,16 @@ L370A:      cpx #$01
             jsr PlotFire2
             jmp L3717
             
-L3714:      jsr L3782
+L3714:      jsr PlotFire3
 L3717:      ldx Tmp1
-            inc BITMSK,X
+            inc Fire1X,X
             lda #$02
             sta ENDPT,X
             bne L36D4
 L3721:      lda #$EA
             sta ENDPT,X
             lda #$08
-            sta BITMSK,X
+            sta Fire1X,X
             cpx #$00
             bne L3731
             lda #$E8

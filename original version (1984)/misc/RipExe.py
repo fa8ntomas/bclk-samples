@@ -80,8 +80,8 @@ a8mem=buildMem()
 
 def getFontAdrList(mem):
     fontAdr=set() 
-    for roomIndex in range(0,21):
-        fontAdr.add(word(0,a8mem[0x3F17+roomIndex]))
+    for fontIndex in range(0,4):
+        fontAdr.add(word(0,0x68+fontIndex*4))
     return list(fontAdr)
 
 class blfont:

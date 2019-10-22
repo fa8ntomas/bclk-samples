@@ -49,17 +49,17 @@ L3125:      lda MapSomething
 L3137:      jsr PlotFireL378C
             jmp L3158
             
-L313D:      ldx BITMSK
+L313D:      ldx Fire1X
             cpx #$24
             bcs L3137
             lda #$06
             jsr PlotFireL378C
-            inc BITMSK
+            inc Fire1X
             lda #$02
             sta ENDPT
             bne L3137
 L3150:      lda #$22
-            sta BITMSK
+            sta Fire1X
             lda #$ED
             sta ENDPT
 L3158:      dec MapVar3

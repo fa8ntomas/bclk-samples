@@ -5,17 +5,17 @@
             sta MapVar1
             sta MapVar2
             lda #$08
-            sta BITMSK
-            sta SHFAMT
-            sta ROWAC
+            sta Fire1X
+            sta Fire2X
+            sta Fire3X
             lda #$03
-            sta ROWAC+1
+            sta Fire1Y
             lda #$05
             sta BUFSTR
             lda #$07
-            sta COLAC
+            sta Fire2Y
             lda #$09
-            sta COLAC+1
+            sta Fire3Y
             lda #$0B
             sta BUFCNT
             lda #$F8
