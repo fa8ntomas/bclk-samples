@@ -1,3 +1,5 @@
+            .local mytitlescreen
+
 			ADLI        equ $0080
 			AVB         equ $0040
 			ALMS        equ $0040
@@ -12,15 +14,10 @@
 			AEMPTY6     equ $0050
 			AEMPTY7     equ $0060
 			AEMPTY8     equ $0070
- 
-			L00CE=$CE
-          
+      
             .align $800
 
-		;	 org $9800
-
-L9800
-L2023       .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+ScreenData  .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
             .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
             .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
             .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
@@ -95,18 +92,15 @@ L2023       .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$0
             .byte $4D,$4D,$4D,$4D,$4D,$4D,$4D,$4D,$00,$00,$00,$00,$00,$00,$00,$00
             .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
             .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
-;
-	
 
-Music:      ;Music Data
-	    .DBYTE (Music + $0F)	
-	    .DBYTE (Music + $18A) 	
-	    .DBYTE (Music + $1C5) 	
-	    .DBYTE (Music + $200) 
-	    .DBYTE (Music + $273) 	
-	    .DBYTE (Music + $2EE) 
-	    .DBYTE (Music + $369) 	
-	    .byte $00,$E0,$00,$04
+MusicData:  .dbyte (MusicData + $0F)	
+            .dbyte (MusicData + $18A) 	
+            .dbyte (MusicData + $1C5) 	
+            .dbyte (MusicData + $200) 
+            .dbyte (MusicData + $273) 	
+            .dbyte (MusicData + $2EE) 
+            .dbyte (MusicData + $369) 	
+            .byte $00,$E0,$00,$04
             .byte $08,$01,$08,$00,$0A,$02,$0A,$02,$A0,$70,$00,$FF,$04,$80,$04,$AD
             .byte $04,$A2,$04,$FF,$04,$80,$04,$AD,$04,$A2,$04,$FF,$04,$80,$04,$AD
             .byte $04,$A2,$04,$FF,$04,$80,$04,$AD,$04,$A2,$04,$FF,$04,$80,$04,$AD
@@ -199,20 +193,21 @@ Music:      ;Music Data
             .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
             .byte $00
 
-
-Reset:      lda #$00		;
+ResetAudio: lda #$00		;
             sta L00E6		;
             sta AUDCTL		;
+
             lda #$03		;
             sta SKCTL		;
             sta SSKCTL		;
+
 NtDtSg:     ldy L00E6		;
             inc L00E6		;
             inc L00E6		;
             lda ($C0),Y		;
             bne NonZero		;
             dec $E4			;
-            bne Reset		;
+            bne ResetAudio		;
             sta $E2			;
             ldx #$07		;
 ClAdRg2:    sta AUDF1,X		;
@@ -274,33 +269,24 @@ SkipHi2:    inx
             sta $E2
             rts
 
-start   	;lda #$3C
-           ; sta PBCTL
-			
-           ; lda #$FF
-           ; sta PORTB
-			
-           ; lda #$01
-           ; sta BASICF
-            
-			lda #<Music		;
-            sta $C0			;Music Data Low address
-            lda #>Music		;
-            sta $C1			;Music Data high address
+start   	lda #<MusicData		
+            sta $C0			
+            lda #>MusicData	
+            sta $C1			
             
 			lda #$02		;
             sta $E4			;Play through song two times
             
-			jsr Reset		;Reset Audio
+			jsr ResetAudio		;Reset Audio
 			
 			lda #$22
 			jsr displayon
 			
 			jmp L4800
 
-            org L9800 + ($A300 - $9800)
-;
-thefont       .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+            org ScreenData + $B00
+
+PMData      .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
             .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
             .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
             .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
@@ -381,18 +367,18 @@ thefont       .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,
             .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
             .byte $00,$00,$00,$00,$00,$00,$00,$00,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
 			  
-            
-			org L9800+$1000 ;$A800
+           .error *<>(ScreenData+$1000)
+
 LA800			
-L4800       lda #>thefont        
+L4800       lda #>PMData        
 			sta PMBASE
 			
             lda #$03
             sta GRACTL
 			
             lda RTCLOK+2
-L480C       cmp RTCLOK+2
-            beq L480C
+@           cmp RTCLOK+2
+            beq @-
 			
             sei
 			
@@ -439,23 +425,9 @@ L4837       sta HPOSP0,X
             cli
 			
 			rts
-			;nop
-			;nop
-            ;jmp (DOSVEC)
-			
-;L484B       lda VCOUNT
-;            cmp #$02
-;            bne L484B;
-			
-;            sta WSYNC
-;            sta WSYNC
- ;           sta WSYNC
 
- ;           lda #<L4863
- ;           sta L4A97+1
+            ert *> L4800+$63
 
-  ;          jmp L4B2C
-			
 			org L4800+$63
 			
 L4863       lda #$C8
@@ -467,7 +439,7 @@ L4863       lda #$C8
 
             jmp L4B2C
 			
-L4873       lda #>(thefont1+$400) ; #$2C
+L4873       lda #>(fonts+$400) ; #$2C
             sta WSYNC
             sta CHBASE
 
@@ -507,7 +479,7 @@ L48A2       sta WSYNC
             sta L4A97+1
             jmp L4B2C
 			
-L48CE	    lda #>(thefont1+$800) ;#$30
+L48CE	    lda #>(fonts+$800) ;#$30
             sta WSYNC
             sta CHBASE
             
@@ -552,7 +524,7 @@ L4927       sta WSYNC
             sta L4A97+1
             jmp L4B2C
 			
-L4940       lda #>(thefont1+$C00)
+L4940       lda #>(fonts+$C00)
             sta WSYNC
             sta CHBASE
 			
@@ -605,7 +577,7 @@ L4982       sta WSYNC
             sta L4A97+1
             jmp L4B2C
 			
-L49C1       lda #>(thefont1+$1000) ;#$38
+L49C1       lda #>(fonts+$1000) ;#$38
             sta WSYNC
             sta CHBASE
             sta WSYNC
@@ -668,7 +640,7 @@ L49E2       lda #$C1
             sta L4A97+2
             jmp L4B2C
 			
-L4A61       lda #>thefont1 ;#$28
+L4A61       lda #>fonts ;#$28
             sta WSYNC
             sta CHBASE
             
@@ -677,7 +649,7 @@ L4A61       lda #>thefont1 ;#$28
             
 			jmp L4B2C
 			
-L4A71       lda #>(thefont1+$1000) ;#$38
+L4A71       lda #>(fonts+$1000) ;#$38
             sta WSYNC
             sta CHBASE
             
@@ -686,7 +658,7 @@ L4A71       lda #>(thefont1+$1000) ;#$38
             
 			jmp L4B2C
 			
-L4A81    	lda #>thefont1 ;#$28
+L4A81    	lda #>fonts ;#$28
             sta WSYNC
             sta CHBASE
             
@@ -714,7 +686,7 @@ NoDLI       sta NMIRES
             
 			inc RAMLO
             
-			lda #>thefont1 ;#$28
+			lda #>fonts ;#$28
             sta CHBASE
             lda #$00
             sta COLBK
@@ -793,7 +765,7 @@ LdNxt:      dex
             jsr NtDtSg
             bne VBIDone
 CntSg:      dec $00CC
-            lda L00CE
+            lda $CE
             sta $E0
             ldx #$06
 NxtVlu:     dec L00DF,X
@@ -834,7 +806,7 @@ L9E30
 			;LDX #$E4
 			;LDA #$07
 			;JSR SETVBV
-			JMP L0418
+			JMP BLCK_STARTADR; L0418
 
 displayoff	LDA #0
 displayon	STA SDMCTL
@@ -845,7 +817,7 @@ displayon	STA SDMCTL
 L2000      
 ;
             .byte ALMS+$04
-            .word L2023
+            .word ScreenData
             .byte $04,$04,$04,$04
             .byte ADLI+$04
             .byte $04
@@ -874,8 +846,8 @@ L2000
 
 
             org LA800+$400; $ac00
-;
-thefont1       .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$05,$15,$15,$15,$55,$55,$55
+
+fonts       .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$05,$15,$15,$15,$55,$55,$55
             .byte $55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$5D,$5F,$5F,$5F,$5F
             .byte $55,$55,$55,$55,$D5,$F5,$FE,$FA,$55,$55,$55,$55,$55,$55,$57,$57
             .byte $55,$55,$55,$55,$55,$55,$55,$D5,$00,$50,$54,$54,$54,$55,$55,$55
@@ -1195,18 +1167,7 @@ thefont1       .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$05,$15,$15,$15,$55,$55
             .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
             .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
             .byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
-;
 
-            
-            BLCK_STARTADR set L9E2D
+            .endl
 
- 
-;			org $02E2
-;
- ;           .word  displayoff; start  ; L4800
-
- ;           org $02E2
-;
- ;           .word  lee; start  ; L4800
-;
-         
+            BLCK_STARTADR set mytitlescreen.L9E2D
