@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bleditor>
+  <font uid="7270019e-a324-41e9-a0bf-55e7ebd17de5" path="fnts\Font0.fnt" />
+  <include>asm\titlescreen.asm</include>
+  <map name="New Map 0" font="7270019e-a324-41e9-a0bf-55e7ebd17de5" path="maps\Map0.rle" uid="42e0acc3-0ff6-4d8a-b93a-9615f5db6882">
+    <dlis>
+      <dli order="COLBK / COLPF0 / COLPF1 / COLPF2" row="0" colbk="128" colpf0="135" colpf1="14" colpf2="69" colpf3="0" />
+    </dlis>
+    <InitRoutinePath></InitRoutinePath>
+    <ExecRoutinePath></ExecRoutinePath>
+    <TileCollisionRoutinePath></TileCollisionRoutinePath>
+    <Colpf0Dectection>
+      <Type>Always</Type>
+    </Colpf0Dectection>
+    <Colpf2Dectection>
+      <Type>Always</Type>
+    </Colpf2Dectection>
+    <Colpf3Dectection>
+      <Type>Always</Type>
+    </Colpf3Dectection>
+    <foe>false</foe>
+    <brucestart>
+      <x1>100</x1>
+      <x2>0</x2>
+      <y1>150</y1>
+      <y2>0</y2>
+    </brucestart>
+    <exit1>
+      <map />
+      <x>0</x>
+      <y>0</y>
+    </exit1>
+    <exit2>
+      <map />
+      <x>0</x>
+      <y>0</y>
+    </exit2>
+    <exit3>
+      <map />
+      <x>0</x>
+      <y>0</y>
+    </exit3>
+    <exit4>
+      <map />
+      <x>0</x>
+      <y>0</y>
+    </exit4>
+    <YamoSpawnPosition>0</YamoSpawnPosition>
+    <NinjaSpawnPosition>0</NinjaSpawnPosition>
+    <NinjaEnterCount1>0</NinjaEnterCount1>
+    <NinjaEnterCount2>0</NinjaEnterCount2>
+    <YamoEnterCount1>0</YamoEnterCount1>
+    <YamoEnterCount2>0</YamoEnterCount2>
+  </map>
+</bleditor>

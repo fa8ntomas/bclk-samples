@@ -209,3 +209,53 @@ L2528:      cpy #$08
             bpl L24ED
             rts
  
+TestColision 	cmp #TILE_FATAL_1
+            beq L26F5
+            
+			cmp #TILE_FATAL_2
+            beq FatalOnMap10			; Fatal if < Map 10
+            
+			cmp #TILE_FATAL_3
+            beq L26F5
+            
+			cmp #TILE_FATAL_4
+            beq L26F5
+            
+			cmp #TILE_FATAL_5
+            beq L26D1
+            
+			cmp #$D4
+            bcc L26DD_
+			
+            cmp #$DB
+            bcc L26F5
+			
+L26D1:      cmp #$F1
+            bcc L26D9
+            
+			cmp #$FD
+            bcc L26F5
+			
+L26D9:      cmp #TILE_TREE	
+            beq L26EB
+			
+L26DD_:      rts
+
+
+L26EB:      jmp TriggerTree
+
+FatalOnMap10:      
+            lda CurrentMap
+            cmp #10
+            bcs L26F5
+            rts
+            
+L26F5:      jmp HitFatal
+
+FatalOnMap16:      
+			lda CurrentMap
+            cmp #16
+            beq L26E5
+            rts
+            
+L26E5:      jmp L27BD
