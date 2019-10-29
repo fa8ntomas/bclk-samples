@@ -16,6 +16,6 @@ See [this post](https://atariage.com/forums/topic/288392-two-bruce-lee-sequels/?
 
 Shows how to add a title screen. 
 
-![screenshot](title%20screen/misc/screenshot.png)
+![screenshot](title%20screen/misc/screenshot.png)![screenshot](title%20screen/misc/screenshotB.png)
 
 Gfx credit: [MrFish](https://atariage.com/forums/topic/158867-enhanced-bruce-lee-title-screen/).
