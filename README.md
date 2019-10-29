@@ -2,7 +2,7 @@
 
 ## Original version (1984 Datasoft)
 
-The original version of Brule Lee (By Ron J Fortier and Kelly Day) rearranged for BLCK.
+The original version of Brule Lee (By Ron J Fortier and Kelly Day) in BLCK format.
 
 ![screenshot](original%20version%20(1984)/misc/screenshot.png)
 
